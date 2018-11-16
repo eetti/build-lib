@@ -255,6 +255,7 @@ function install_fabric_chaincode {
         -F files="@${CC_ZIP_FILE}" \
         -F chaincode_id="${CC_ID}" -F chaincode_version="${CC_VERSION}" \
         -F chaincode_type="${CC_TYPE}" \
+        -k \
         "${BLOCKCHAIN_API}/chaincode/install")
     RET_CODE=$?
 
@@ -321,6 +322,7 @@ EOF
         -H 'Content-Type: application/json' \
         -u "${BLOCKCHAIN_KEY}:${BLOCKCHAIN_SECRET}" \
         --data-binary @request.json \
+        -k \
         "${BLOCKCHAIN_API}/channels/${CHANNEL}/chaincode/instantiate")
     
     local do_curl_status=$?
